@@ -1,22 +1,5 @@
 import { Link } from "react-router-dom";
 
-import Subscribe from "../assets/subscribe.png";
-import Library from "../assets/library.png";
-import History from "../assets/history.png";
-import YourVideos from "../assets/video-player.png";
-import ClockImage from "../assets/clock.png";
-import ScissorImage from "../assets/scissor.png";
-import TredingFire from "../assets/trending.png";
-import BagImage from "../assets/bag.png";
-import MusicIcon from "../assets/music.png";
-import Movies from "../assets/movies.png";
-import Online from "../assets/online.png";
-import Gaming from "../assets/game.png";
-import News from "../assets/news.png";
-import TrophyIcon from "../assets/trophy.png";
-import IdeaIcon from "../assets/light.png";
-import Fashion from "../assets/tie.png";
-
 const SideBar = () => {
   return (
     <aside className="hidden h-[calc(100%_-_60px)] w-56 bg-black pl-4 pr-4 text-white md:block">
@@ -90,11 +73,11 @@ const SideBar = () => {
           <span>Sports</span>
         </Link>
         <Link className="transition-bg mb-1 flex items-center  rounded-lg px-3 py-2 duration-150 ease-in-out hover:bg-white/[0.2]">
-        <i class="fa-solid fa-lightbulb mr-6"></i>
+          <i class="fa-solid fa-lightbulb mr-6"></i>
           <span>Learning</span>
         </Link>
         <Link className="transition-bg mb-1 flex items-center  rounded-lg px-3 py-2 duration-150 ease-in-out hover:bg-white/[0.2]">
-        <i class="fa-solid fa-shirt mr-5"></i>
+          <i class="fa-solid fa-shirt mr-5"></i>
           <span>Fashion & Beauty</span>
         </Link>
       </ul>
