@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
+import { useDispatch } from "react-redux";
+import { toggleMenu } from "../utils/appSlice";
+import { Link } from "react-router-dom";
 
 import logoImage from "../assets/logo.png";
 import userImage from "../assets/userImg.png";
@@ -7,28 +10,41 @@ import notificationIcon from "../assets/bellpng.png";
 import microphone from "../assets/microphone1.png";
 
 const Header = () => {
+  const dispatch = useDispatch();
+
+  const toggleMenuHandler = () => {
+    dispatch(toggleMenu());
+  };
 
   return (
-    <header className="sticky top-0 z-10 w-full bg-white px-4 dark:bg-black md:px-5">
+    <header className="sticky top-0 z-10 w-full bg-white px-4 dark:bg-black md:h-[60px] md:px-5">
       <div className="flex h-14 w-full items-center justify-between ">
         <div className="flex items-center gap-1">
           <div className="group flex items-center">
-            <div className="hidden md:mr-4 md:block">
-              <div className="flex h-9 w-9 cursor-pointer flex-col items-center justify-center rounded-full transition duration-150 ease-in-out hover:bg-white/[0.2] ">
+            <div
+              className="hidden md:mr-4 md:block"
+              onClick={() => toggleMenuHandler()}
+            >
+              <div className="flex h-9 w-9 cursor-pointer flex-col items-center justify-center rounded-full transition duration-150 ease-in-out hover:bg-white/[0.2] md:h-7 md:w-7 ">
                 <div className="mb-1 h-[2px] w-5 bg-white"></div>
                 <div className="mb-1 h-[2px] w-5 bg-white"></div>
                 <div className="h-[2px] w-5 bg-white "></div>
               </div>
             </div>
-            <img
-              className="h-8 w-8 cursor-pointer md:h-10 md:w-10"
-              src={logoImage}
-              alt="logo-image"
-            />
+
+            <Link to="/">
+              <img
+                className="h-8 w-8 cursor-pointer md:h-8 md:w-7 lg:h-10 lg:w-10"
+                src={logoImage}
+                alt="logo-image"
+              />
+            </Link>
           </div>
-          <div className="font-pathway text-2xl font-extrabold tracking-wide text-white md:text-[28px] cursor-pointer">
-            LightTube
-          </div>
+          <Link to="/">
+            <div className="cursor-pointer font-pathway text-2xl font-extrabold tracking-wide text-white md:text-xl lg:text-[28px]">
+              LightTube
+            </div>
+          </Link>
         </div>
 
         <div className=" hidden md:block">
@@ -64,24 +80,24 @@ const Header = () => {
           </div>
         </div>
 
-        <ul className="flex items-center gap-4 md:gap-5">
-          <li className="flex h-10 w-10 items-center justify-center rounded-full bg-white/[0.1] duration-150 ease-in-out hover:bg-white/[0.3]">
+        <ul className="flex items-center gap-4 md:gap-1 lg:gap-5">
+          <li className="flex h-10 w-10 items-center justify-center rounded-full bg-white/[0.1] duration-150 ease-in-out hover:bg-white/[0.3] md:h-6 md:w-8">
             <img
-              className="h-5 w-5 cursor-pointer border-white text-white outline-white md:h-6 md:w-6 "
+              className="lg-h-7 h-5 w-5 cursor-pointer border-white text-white outline-white md:h-5 md:w-5 lg:w-7 "
               src={notificationIcon}
               alt="notification-icon"
             />
           </li>
           <li>
             <img
-              className="h-6 w-6 cursor-pointer text-white md:hidden "
+              className="h-6 w-6 cursor-pointer text-white md:hidden md:h-8 md:w-8 "
               src={searchSymbol}
               alt="search-icon"
             />
           </li>
           <li>
             <img
-              className="h-8 w-8 cursor-pointer md:h-11 md:w-11"
+              className="h-8 w-8 cursor-pointer lg:h-11 lg:w-11"
               src={userImage}
               alt="user-image"
             />
