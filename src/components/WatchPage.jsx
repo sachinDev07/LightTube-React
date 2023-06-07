@@ -42,10 +42,10 @@ const WatchPage = () => {
       >
         <BigSideBar />
       </div>
-      <div className="lg:grid lg:grid-cols-12">
+      <div className="md:bg-[#1f1f1f] lg:grid  lg:grid-cols-12 ">
         <MainVideo videoData={videoData} />
         <RecommendedVideo />
-        <VideoDescription />
+        <VideoDescription videoData={videoData} />
         <CommentSection />
       </div>
     </div>
