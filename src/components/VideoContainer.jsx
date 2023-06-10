@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import { YOUTUBE_VIDEOS_API } from "../utils/constant";
 import Video from "./Videos";
@@ -8,6 +9,7 @@ const VideoContainer = () => {
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const navigate = useNavigate();
 
   useEffect(() => {
     getVideos();
@@ -31,11 +33,16 @@ const VideoContainer = () => {
   }
 
   return (
-    <div className="mt-6 flex w-full flex-wrap md:gap-3  lg:ml-[0px] lg:gap-0 md:ml-24 lg:justify-between">
+    <div className="mt-6 flex w-full flex-wrap md:ml-24  md:gap-3 lg:ml-[0px] lg:justify-between lg:gap-0">
       {videos?.map((video) => {
-        return <Video key={video.id} video={video} />;
+        return (
+          <Link to={`watch?v=`+ video.id} key={video.id}>
+            <Video  video={video} />
+          </Link>
+        );
       })}
     </div>
+    
   );
 };
 
