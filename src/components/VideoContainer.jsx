@@ -9,8 +9,6 @@ const VideoContainer = () => {
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const navigate = useNavigate();
-
   useEffect(() => {
     getVideos();
   }, []);
