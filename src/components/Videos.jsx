@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import Img from "./lazyLoadImage/Img";
 import { YOUTUBE_API_KEY } from "../utils/youtubeApiKey";
 import moment from "moment";
+import VideoLength from "./VideoLength";
 
 const Video = ({ video }) => {
   const {
@@ -17,9 +18,15 @@ const Video = ({ video }) => {
     statistics: { viewCount },
   } = video;
 
+  console.log(video?.contentDetails?.duration);
+
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
 
   const [channelIcon, setChannelIcon] = useState([]);
+
+  const duration = video?.contentDetails?.duration;
+  const seconds = moment.duration(duration).asSeconds();
+  const videoLength = moment.utc(seconds * 1000).format("mm:ss");
 
   useEffect(() => {
     getChannelIcon();
@@ -64,7 +71,7 @@ const Video = ({ video }) => {
       }`}
     >
       <div
-        className={`w-full md:w-[300px] ${
+        className={`relative w-full md:w-[300px] ${
           isMenuOpen === true ? "lg:w-[360px]" : "lg:w-[325px]"
         } `}
       >
@@ -74,6 +81,8 @@ const Video = ({ video }) => {
           }`}
           src={medium.url}
         />
+
+        <VideoLength videoLength={videoLength} />
       </div>
       <div className="mt-3 flex w-full justify-center gap-2 px-3 md:px-0">
         <div className="mr-1 h-full w-[40px] cursor-pointer md:w-[36px]">
