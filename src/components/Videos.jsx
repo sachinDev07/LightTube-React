@@ -81,8 +81,9 @@ const Video = ({ video }) => {
           }`}
           src={medium.url}
         />
-
-        <VideoLength videoLength={videoLength} />
+        {
+          duration && <VideoLength videoLength={videoLength} />
+        }
       </div>
       <div className="mt-3 flex w-full justify-center gap-2 px-3 md:px-0">
         <div className="mr-1 h-full w-[40px] cursor-pointer md:w-[36px]">
