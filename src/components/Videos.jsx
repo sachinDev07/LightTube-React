@@ -18,8 +18,6 @@ const Video = ({ video }) => {
     statistics: { viewCount },
   } = video;
 
-  console.log(video?.contentDetails?.duration);
-
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
 
   const [channelIcon, setChannelIcon] = useState([]);
