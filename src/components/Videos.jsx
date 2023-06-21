@@ -110,7 +110,6 @@ const Video = ({ video }) => {
           <div className="mb-[3px] h-1 w-1 rounded-full bg-[#f1f1f1]"></div>
           <div className="h-1 w-1 rounded-full bg-[#f1f1f1]"></div>
         </div>
-        hgh
       </div>
     </div>
   );
