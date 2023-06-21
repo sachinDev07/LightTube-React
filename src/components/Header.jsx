@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 import { Link } from "react-router-dom";
@@ -8,12 +8,33 @@ import userImage from "../assets/userImg.png";
 import searchSymbol from "../assets/searchSymbol.png";
 import notificationIcon from "../assets/bellpng.png";
 import microphone from "../assets/microphone1.png";
+import { YOUTUBE_SEARCH_API } from "../utils/constant";
 
 const Header = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  console.log(searchQuery);
+
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      getSearchSuggestions();
+    }, 200);
+
+    return () => {
+      clearTimeout(timer);
+    };
+    
+  }, [searchQuery]);
 
   const toggleMenuHandler = () => {
     dispatch(toggleMenu());
+  };
+
+  const getSearchSuggestions = async () => {
+    const response = await fetch(YOUTUBE_SEARCH_API + "&q=" + searchQuery);
+    const data = await response.json();
+    console.log(data);
   };
 
   return (
@@ -60,6 +81,8 @@ const Header = () => {
               <input
                 type="text"
                 placeholder="Search"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-44 bg-transparent pl-5 pr-5 text-white outline-none md:w-64 md:pl-0 md:group-focus-within:pl-0 lg:w-[500px]"
               />
             </div>
