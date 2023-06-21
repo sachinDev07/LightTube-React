@@ -27,7 +27,6 @@ const VideoContainer = () => {
       setVideos(prevVideos => [...prevVideos, ...data.items]);
       setNextPageToken(data.nextPageToken);
       setPrevPageToken(data.prevPageToken);
-      console.log(data);
     } catch (error) {
       console.error('Error fetching videos:', error);
     } finally {
