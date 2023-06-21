@@ -9,3 +9,6 @@ export const YOUTUBE_VIDEOS_API =
 export const YOUTUBE_CHANNEL_ID_API =
   "https://youtube.googleapis.com/youtube/v3/channels?part=snippet&id=channelId&maxResults=50&key=" +
   YOUTUBE_API_KEY;
+
+// YOUTUBE SEARCH API
+export const YOUTUBE_SEARCH_API = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&regionCode=in&maxResults=50&type=video%2Cplaylist&key=" + YOUTUBE_API_KEY
