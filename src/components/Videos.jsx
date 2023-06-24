@@ -64,7 +64,7 @@ const Video = ({ video }) => {
 
   return (
     <div
-      className={`group mb-8 w-full cursor-pointer md:w-[300px] ${
+      className={` group mb-8 w-full cursor-pointer md:w-[300px] ${
         isMenuOpen === true ? "lg:w-[360px]" : "lg:w-[325px]"
       }`}
     >
@@ -74,14 +74,12 @@ const Video = ({ video }) => {
         } `}
       >
         <Img
-          className={` w-[100vw] object-cover md:w-[300px] md:rounded-lg ${
+          className={`w-screen object-cover md:w-[300px] md:rounded-lg ${
             isMenuOpen === true ? "lg:w-[360px]" : "lg:w-[325px]"
           }`}
           src={medium.url}
         />
-        {
-          duration && <VideoLength videoLength={videoLength} />
-        }
+        {duration && <VideoLength videoLength={videoLength} />}
       </div>
       <div className="mt-3 flex w-full justify-center gap-2 px-3 md:px-0">
         <div className="mr-1 h-full w-[40px] cursor-pointer md:w-[36px]">
@@ -90,7 +88,7 @@ const Video = ({ video }) => {
             src={channelIcon?.url}
           />
         </div>
-        <div className="w-[320px] md:w-[230px] lg:w-[300px] ">
+        <div className="w-full md:w-[230px] lg:w-[300px] ">
           <p className="line-clamp-2 font-bold text-[#f1f1f1]">{title}</p>
           <span className="mb-0 mt-2 inline-block font-roboto text-sm text-[#aaaaaa] hover:text-white">
             {channelTitle}
