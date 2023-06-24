@@ -13,7 +13,19 @@
   <!-- font-awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-<body>
+  <style>
+    .hide-scrollbar::-webkit-scrollbar {
+      width: 0em; /* Adjust the width as needed */
+      background-color: transparent;
+    }
+  
+    .hide-scrollbar::-webkit-scrollbar-thumb {
+      background-color: transparent;
+    }
+  </style>
+  
+
+<body class="hide-scrollbar">
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
 </body>
