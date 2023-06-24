@@ -131,7 +131,7 @@ const Header = () => {
         </ul>
       </div>
       {showSuggestions && (
-        <div className="absolute rounded-2xl bg-[#202020] p-4 text-white lg:left-[480px] lg:top-[52px] lg:w-[540px]">
+        <div className="absolute rounded-2xl bg-[#202020] p-4 text-white md:w-[340px] md:left-[230px] lg:left-[480px] lg:top-[52px] lg:w-[540px]">
           <ul>
             {suggestions?.map((suggestion, index) => (
               <li key={index} className="mb-2 flex items-center gap-3">
@@ -140,7 +140,7 @@ const Header = () => {
                   src={searchSymbol}
                   alt="search-image"
                 />
-                <p className="text-base font-medium">{suggestion?.title}</p>
+                <p className="md:text-sm lg:text-base font-medium">{suggestion?.title}</p>
               </li>
             ))}
           </ul>
