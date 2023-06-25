@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 import { Link } from "react-router-dom";
 
@@ -9,17 +9,24 @@ import searchSymbol from "../assets/searchSymbol.png";
 import notificationIcon from "../assets/bellpng.png";
 import microphone from "../assets/microphone1.png";
 import { YOUTUBE_SEARCH_API } from "../utils/constant";
+import { cacheResults } from "../utils/searchSlice";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
 
+  const searchCache = useSelector((store) => store.search);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      getSearchSuggestions();
+      if (searchCache[searchQuery]) {
+        setSuggestions(searchCache[searchQuery]);
+      } else {
+        getSearchSuggestions();
+      }
     }, 200);
 
     return () => {
@@ -27,15 +34,22 @@ const Header = () => {
     };
   }, [searchQuery]);
 
-  const toggleMenuHandler = () => {
-    dispatch(toggleMenu());
-  };
-
   const getSearchSuggestions = async () => {
     const response = await fetch(YOUTUBE_SEARCH_API + "&q=" + searchQuery);
     const data = await response.json();
     const suggestions = data?.items?.map((item) => item.snippet) || [];
     setSuggestions(suggestions);
+
+    // update the cache...
+    dispatch(
+      cacheResults({
+        [searchQuery]: suggestions,
+      })
+    );
+  };
+
+  const toggleMenuHandler = () => {
+    dispatch(toggleMenu());
   };
 
   return (
@@ -131,16 +145,21 @@ const Header = () => {
         </ul>
       </div>
       {showSuggestions && (
-        <div className="absolute rounded-2xl bg-[#202020] p-4 text-white md:w-[340px] md:left-[230px] lg:left-[480px] lg:top-[52px] lg:w-[540px]">
+        <div className="absolute rounded-2xl bg-[#202020]  text-white md:left-[230px] md:w-[340px] lg:left-[480px] lg:top-[52px] lg:w-[540px]">
           <ul>
             {suggestions?.map((suggestion, index) => (
-              <li key={index} className="mb-2 flex items-center gap-3">
+              <li
+                key={index}
+                className="mb-2 flex cursor-default items-center gap-3 px-4 py-1 hover:bg-[#3f3e3e]"
+              >
                 <img
                   className="md:h-4 md:w-4"
                   src={searchSymbol}
                   alt="search-image"
                 />
-                <p className="md:text-sm lg:text-base font-medium">{suggestion?.title}</p>
+                <p className="font-medium md:text-sm lg:text-base">
+                  {suggestion?.title}
+                </p>
               </li>
             ))}
           </ul>
