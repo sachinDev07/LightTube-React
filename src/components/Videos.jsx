@@ -13,7 +13,7 @@ const Video = ({ video }) => {
       channelTitle,
       title,
       publishedAt,
-      thumbnails: { medium },
+      thumbnails: { high },
     },
     statistics: { viewCount },
   } = video;
@@ -77,7 +77,7 @@ const Video = ({ video }) => {
           className={`w-screen object-cover md:w-[300px] md:rounded-lg ${
             isMenuOpen === true ? "lg:w-[360px]" : "lg:w-[325px]"
           }`}
-          src={medium.url}
+          src={high.url}
         />
         {duration && <VideoLength videoLength={videoLength} />}
       </div>
