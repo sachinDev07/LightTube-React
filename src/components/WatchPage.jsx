@@ -30,7 +30,6 @@ const WatchPage = () => {
     const response = await fetch(url);
     const { items } = await response.json();
     setVideoData(items[0]);
-    console.log(items[0]);
   };
 
   return (
