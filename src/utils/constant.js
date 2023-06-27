@@ -15,6 +15,8 @@ export const YOUTUBE_SEARCH_API =
   "https://youtube.googleapis.com/youtube/v3/search?part=snippet&regionCode=in&maxResults=11&type=video%2Cplaylist&key=" +
   YOUTUBE_API_KEY;
 
+export const OFFSET_LIVE_CHAT = 10;
+
 export const commentsData = [
   {
     name: "Tarun",
