@@ -5,6 +5,7 @@ import Img from "./lazyLoadImage/Img";
 import { YOUTUBE_API_KEY } from "../utils/youtubeApiKey";
 import moment from "moment";
 import VideoLength from "./VideoLength";
+import { Link } from "react-router-dom";
 
 const Video = ({ video }) => {
   const {
@@ -13,7 +14,7 @@ const Video = ({ video }) => {
       channelTitle,
       title,
       publishedAt,
-      thumbnails: { high },
+      thumbnails: { medium },
     },
     statistics: { viewCount },
   } = video;
@@ -77,16 +78,18 @@ const Video = ({ video }) => {
           className={`w-screen object-cover md:w-[300px] md:rounded-lg ${
             isMenuOpen === true ? "lg:w-[360px]" : "lg:w-[325px]"
           }`}
-          src={high.url}
+          src={medium.url}
         />
         {duration && <VideoLength videoLength={videoLength} />}
       </div>
       <div className="mt-3 flex w-full justify-center gap-2 px-3 md:px-0">
         <div className="mr-1 h-full w-[40px] cursor-pointer md:w-[36px]">
-          <Img
-            className="h-full w-[40px] rounded-3xl object-cover md:h-[36px] md:w-[36px]"
-            src={channelIcon?.url}
-          />
+          <Link to={`channel`}>
+            <Img
+              className="h-full w-[40px] rounded-3xl object-cover md:h-[36px] md:w-[36px]"
+              src={channelIcon?.url}
+            />
+          </Link>
         </div>
         <div className="w-full md:w-[230px] lg:w-[300px] ">
           <p className="line-clamp-2 font-bold text-[#f1f1f1]">{title}</p>

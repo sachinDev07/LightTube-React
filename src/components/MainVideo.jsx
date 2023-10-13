@@ -80,21 +80,21 @@ const MainVideo = ({ videoData }) => {
             </span>
           </div>
         </div>
-        <div className="mb-3 mt-3 flex items-center justify-between ">
-          <div className="flex">
-            <div className="mr-64 flex items-center gap-2 md:mr-10">
+        <div className="mb-3 mt-3 flex items-center justify-between">
+          <div className="flex gap-12">
+            <div className="flex items-center gap-2 md:mr-10">
               <Link to="">
                 <img
                   className="h-full w-[35px] cursor-pointer rounded-3xl object-cover"
                   src={channelIcon?.url}
-                  alt=""
+                  alt="channel icon"
                 />
               </Link>
-              <div className="lg:flex lg:flex-col">
-                <span className="mr-2 cursor-pointer font-bold text-white">
+              <div className="flex lg:flex lg:flex-col">
+                <span className="mr-2 cursor-pointer whitespace-nowrap font-bold text-white">
                   {snippet?.channelTitle}
                 </span>
-                <span className="text-sm text-[#aaaaaa]">
+                <span className="text-sm whitespace-nowrap text-[#aaaaaa]">
                   {abbreviateViewsCount(
                     subscribers?.statistics?.subscriberCount
                   )}{" "}

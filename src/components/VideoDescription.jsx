@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import moment from "moment";
 
-const VideoDescription = ({ videoData }) => {
+const VideoDescription = ({ videoData }) => {  
   const { id, snippet, statistics } = videoData;
 
   const [showMore, setShowMore] = useState(false);
@@ -19,8 +19,8 @@ const VideoDescription = ({ videoData }) => {
   };
 
   return (
-    <div className="lg:col-span-8 lg:pl-14 lg:pr-4">
-      <div className="rounded-xl bg-[#363535] hover:bg-[#5a5959] lg:p-3">
+    <div className="px-6 lg:col-span-8 lg:pl-14 lg:pr-4">
+      <div className="rounded-xl px-2 py-2 bg-[#363535] hover:bg-[#5a5959] lg:p-3">
         <div className="">
           <span className="text mr-3 text-base font-bold text-[#ffffff]">
             {abbreviateViewsCount(statistics?.viewCount)} views
@@ -32,7 +32,7 @@ const VideoDescription = ({ videoData }) => {
         <div className="empty:hidden">
           {showMore
             ? snippet?.description
-            : `${snippet?.description.substring(0, 350)}`
+            : `${snippet?.description.substring(0, 150)}`
           }
           <button
             className={`text-base  font-medium ${showMore ? "block" : "ml-2"}`}
